@@ -20,7 +20,7 @@
           <% end %>
         </div>
 
-        <!-- Submit -->
+        <!-- Submit 123-->
         <%= f.submit "Submit vote",
               class: "w-full bg-[#1B2A4A] hover:bg-[#243a63] text-white font-medium
                       py-2.5 rounded-lg transition-colors cursor-pointer" %>

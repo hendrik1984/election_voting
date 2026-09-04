@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  #Reources
+  resources :elections, only: [:index, :new, :create, :edit, :update] do
+    member do
+      patch :activate
+      patch :deactivate
+    end
+  end
+
+  # Devise
   devise_for :users
   
+  # Get
   get "home/index"
   get "up" => "rails/health#show", as: :rails_health_check
 

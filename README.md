@@ -38,15 +38,15 @@ No RabbitMQ unless we later discover a genuine reason for it
 8. Handle authentication errors
 
 # Milestone 3 — Election
-Create Election model
-Define election attributes
-Create election
-Edit election
-Delete election
-Add election start time
-Add election end time
-Implement election status
-Display election information
+1. Create Election model
+2. Define election attributes
+3. Create election
+4. Edit election
+5. Delete election
+6. Add election start time
+7. Add election end time
+8. Implement election status
+9. Display election information
 
 Example:
 

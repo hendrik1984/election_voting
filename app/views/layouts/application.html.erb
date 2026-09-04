@@ -24,43 +24,9 @@
   </head>
 
   <body class="bg-gray-100 text-gray-900">
-    <main>      
-      <div class="space-y-2">
-        <% if notice.present? %>
-          <p class="notice bg-[#1E8E5A]/10 border border-[#1E8E5A]/30 text-[#1E8E5A] text-sm font-medium px-4 py-3 rounded-lg">
-            <%= notice %>
-          </p>
-        <% end %>
-        <% if alert.present? %>
-          <p class="alert bg-[#C4423A]/10 border border-[#C4423A]/30 text-[#C4423A] text-sm font-medium px-4 py-3 rounded-lg">
-            <%= alert %>
-          </p>
-        <% end %>
-      </div>
-
-      <% if user_signed_in? %>
-        <header class="border-b bg-white">
-          <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <div>
-              <span class="font-semibold">
-                Election Voting
-              </span>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <span class="text-sm text-gray-600">
-                <%= current_user.email %>
-              </span>
-
-              <%= button_to "Log out",
-                  destroy_user_session_path,
-                  method: :delete,
-                  class: "rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700" %>
-            </div>
-          </div>
-        </header>
-      <% end %>
-
+    <main>
+      <%= render "shared/nav" %>
+      
       <%= yield %>
     </main>
   </body>

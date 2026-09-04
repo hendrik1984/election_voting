@@ -1,0 +1,97 @@
+<div class="min-h-screen flex items-center justify-center bg-[#FAFAF8] px-4">
+  <div class="w-full max-w-md">
+
+    <!-- Logo / App name -->
+    <div class="text-center mb-8">
+      <h1 class="text-2xl font-bold text-[#1B2A4A]">VoteApp</h1>
+      <p class="text-sm text-[#5C6470] mt-1">Create your account to get started</p>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-8">
+      <h2 class="text-xl font-semibold text-[#1B2A4A] mb-6">Sign up</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+        <!-- Error messages -->
+        <% if resource.errors.any? %>
+          <div class="mb-4 p-3 bg-[#C4423A]/10 border border-[#C4423A]/30 rounded-lg">
+            <p class="text-sm font-medium text-[#C4423A] mb-1">
+              <%= pluralize(resource.errors.count, "error") %> prevented this account from being created:
+            </p>
+            <ul class="text-sm text-[#C4423A] list-disc list-inside">
+              <% resource.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <!-- Full name (optional, remove if not in your User model) -->
+        <div class="mb-4">
+          <%#= f.label :name, class: "block text-sm font-medium text-[#1B2A4A] mb-1" %>
+          <%#= f.text_field :name,
+                autofocus: true,
+                class: "w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1B2A4A]
+                        focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent
+                        placeholder-gray-400",
+                placeholder: "Jane Doe" %>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <%= f.label :email, class: "block text-sm font-medium text-[#1B2A4A] mb-1" %>
+          <%= f.email_field :email,
+                autocomplete: "email",
+                class: "w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1B2A4A]
+                        focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent
+                        placeholder-gray-400",
+                placeholder: "you@example.com" %>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <%= f.label :password, class: "block text-sm font-medium text-[#1B2A4A] mb-1" %>
+          <% if @minimum_password_length %>
+            <p class="text-xs text-[#5C6470] mb-1"><%= @minimum_password_length %> characters minimum</p>
+          <% end %>
+          <%= f.password_field :password,
+                autocomplete: "new-password",
+                class: "w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1B2A4A]
+                        focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent
+                        placeholder-gray-400",
+                placeholder: "••••••••" %>
+        </div>
+
+        <!-- Confirm password -->
+        <div class="mb-6">
+          <%= f.label :password_confirmation, "Confirm password", class: "block text-sm font-medium text-[#1B2A4A] mb-1" %>
+          <%= f.password_field :password_confirmation,
+                autocomplete: "new-password",
+                class: "w-full px-3 py-2 border border-gray-300 rounded-lg text-[#1B2A4A]
+                        focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent
+                        placeholder-gray-400",
+                placeholder: "••••••••" %>
+        </div>
+
+        <!-- Submit -->
+        <%= f.submit "Create account",
+              class: "w-full bg-[#1B2A4A] hover:bg-[#243a63] text-white font-medium
+                      py-2.5 rounded-lg transition-colors cursor-pointer" %>
+      <% end %>
+
+      <!-- Links -->
+      <div class="mt-6 pt-6 border-t border-gray-100 text-center text-sm text-[#5C6470]">
+        <%= link_to "Already have an account? Log in", new_session_path(resource_name),
+              class: "text-[#1B2A4A] font-medium hover:underline" %>
+      </div>
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center text-xs text-[#5C6470] mt-6">
+      Your login is secure and your vote is confidential.
+    </p>
+  </div>
+</div>
+
+<%= render "devise/shared/links" %>

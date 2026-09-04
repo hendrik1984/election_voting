@@ -41,7 +41,10 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 # Tailwind
-gem "tailwindcss-rails"
+gem 'tailwindcss-rails', '>= 4.6'
+
+# Authentication
+gem 'devise', '>= 5.0.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

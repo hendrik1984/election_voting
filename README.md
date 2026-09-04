@@ -16,26 +16,26 @@ No RabbitMQ unless we later discover a genuine reason for it
 🗳️ Election Voting System — Milestones
 
 # Milestone 1 — Rails Project Foundation
-Create Rails 8 application
-Configure PostgreSQL
-Configure Docker / Docker Compose
-Configure development environment
-Configure environment variables
-Verify Rails ↔ PostgreSQL connection
-Set up application layout
-Set up basic styling
-Create home page
-Add health check
+1. Create Rails 8 application
+2. Configure PostgreSQL
+3. Configure Docker / Docker Compose
+4. Configure development environment
+5. Configure environment variables
+6. Verify Rails ↔ PostgreSQL connection
+7. Set up application layout
+8. Set up basic styling
+9. Create home page
+10. Add health check
 
 # Milestone 2 — User Authentication
-Install Devise
-Create User model
-Implement registration
-Implement login
-Implement logout
-Protect authenticated pages
-Display current user
-Handle authentication errors
+1. Install Devise
+2. Create User model
+3. Implement registration
+4. Implement login
+5. Implement logout
+6. Protect authenticated pages
+7. Display current user
+8. Handle authentication errors
 
 # Milestone 3 — Election
 Create Election model

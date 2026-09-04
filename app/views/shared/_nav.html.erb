@@ -1,0 +1,50 @@
+<div class="space-y-2">
+    <% if notice.present? %>
+        <p class="notice bg-[#1E8E5A]/10 border border-[#1E8E5A]/30 text-[#1E8E5A] text-sm font-medium px-4 py-3 rounded-lg">
+        <%= notice %>
+        </p>
+    <% end %>
+
+    <% if alert.present? %>
+        <p class="alert bg-[#C4423A]/10 border border-[#C4423A]/30 text-[#C4423A] text-sm font-medium px-4 py-3 rounded-lg">
+        <%= alert %>
+        </p>
+    <% end %>
+</div>
+
+<div class="bg-white border-b border-gray-200">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <div>
+        <%= link_to "Election Voting",
+            root_path,
+            class: "font-semibold text-[#1B2A4A] text-lg" %>
+    </div>
+
+    <nav class="flex items-center gap-4">
+      <% if user_signed_in? %>
+        <%= link_to "Elections",
+            elections_path,
+            class: "font-semibold text-[#1B2A4A] text-lg" %>
+        
+        <span class="text-sm text-[#5C6470]">
+            <%= current_user.email %>
+        </span>
+
+        <%= button_to "Log out",
+              destroy_user_session_path,
+              method: :delete,
+              class: "rounded-lg bg-transparent border border-[#C4423A] px-4 py-2 text-sm font-semibold
+                      text-[#C4423A] hover:bg-[#C4423A]/5 transition-colors cursor-pointer" %>
+      <% else %>
+        <%= link_to "Log in",
+              new_user_session_path,
+              class: "text-sm font-semibold text-[#1B2A4A] hover:text-[#243a63] transition-colors" %>
+
+        <%= link_to "Sign up",
+              new_user_registration_path,
+              class: "rounded-lg bg-[#1B2A4A] hover:bg-[#243a63] px-4 py-2 text-sm font-semibold
+                      text-white transition-colors" %>
+      <% end %>
+    </nav>
+  </div>
+</div>

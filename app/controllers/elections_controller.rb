@@ -14,7 +14,7 @@ class ElectionsController < ApplicationController
     @election = Election.new(election_params)
 
     if @election.save
-      redirect_to root_path, notice: "Election was successfully created."
+      redirect_to elections_path, notice: "Election was successfully created."
     else
       render :new, status: :unprocessable_entity
     end

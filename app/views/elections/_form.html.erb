@@ -1,5 +1,5 @@
 <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-8">
-    <%= form_with model: @election do |form| %>
+    <%= form_with model: @election, data: { turbo_frame: "_top" } do |form| %>
         <% if @election.errors.any? %>
             <div class="mb-6 p-3 bg-[#C4423A]/10 border border-[#C4423A]/30 rounded-lg">
                 <p class="text-sm font-medium text-[#C4423A] mb-1">

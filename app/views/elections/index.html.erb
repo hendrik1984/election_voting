@@ -2,12 +2,18 @@
   <div class="mx-auto max-w-6xl px-6 py-10" data-controller="scroll-top">
     <div class="mb-10">
       <div class="flex items-center justify-between">
-          <h1 class="text-3xl font-bold text-[#1B2A4A]">Elections</h1>
-          <%= link_to "Create",
-              new_election_path,
-              class: "rounded-lg bg-[#1B2A4A] hover:bg-[#243a63] px-4 py-2 text-sm font-semibold
-                      text-white transition-colors" %>
+          <h1 class="text-3xl font-bold text-[#1B2A4A]">Elections</h1>          
+          <%= link_to new_election_path,
+              class: "fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center
+                      rounded-full bg-[#1B2A4A] text-white shadow-lg
+                      hover:bg-[#1B2A4A]/90 hover:shadow-xl
+                      active:scale-95 transition-all duration-150" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          <% end %>
       </div>
+      
       <p class="mt-2 text-[#5C6470]">
         View available elections and their current status.
       </p>

@@ -57,14 +57,14 @@ Start:  10:00
 End:    18:00
 
 # Milestone 4 — Candidates
-Create Candidate model
-Define Election → Candidates relationship
-Create candidate
-Edit candidate
-Delete candidate
-Add candidate information
-Display candidates
-Associate candidates with an election
+1. Create Candidate model
+2. Define Election → Candidates relationship
+3. Create candidate => revise create candidate from elections page
+4. Edit candidate
+5. Delete candidate
+6. Add candidate information
+7. Display candidates
+8. Associate candidates with an election
 
 Example:
 

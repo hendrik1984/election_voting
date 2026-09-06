@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_04_134326) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_05_065521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "candidates", force: :cascade do |t|
+    t.date "birth_date"
+    t.integer "candidate_number"
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "education"
+    t.bigint "election_id", null: false
+    t.text "experience"
+    t.string "gender"
+    t.string "image"
+    t.text "mission"
+    t.string "name", null: false
+    t.string "occupation"
+    t.text "short_bio"
+    t.string "status", default: "active", null: false
+    t.datetime "updated_at", null: false
+    t.text "vision"
+    t.index ["election_id"], name: "index_candidates_on_election_id"
+  end
 
   create_table "elections", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,4 +55,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_04_134326) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "candidates", "elections"
 end

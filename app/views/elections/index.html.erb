@@ -73,18 +73,20 @@
                       class: "rounded-lg bg-[#1E8E5A] px-4 py-2 text-sm font-semibold
                               text-white hover:bg-[#1a7a4d] transition-colors cursor-pointer" %>
               <% end %>
+
+              <%= link_to "List Candidates",
+                  election_candidates_path(election),
+                  class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors" %>
+              <%= link_to "Add Candidates",
+                new_election_candidate_path(election),
+                class: "rounded-lg bg-[#1B2A4A] hover:bg-[#243a63] px-4 py-2 text-sm font-semibold text-white transition-colors" %>
+          
             </div>
           </div>
 
           <div class="flex gap-3">
-            <%= link_to "List Candidates",
-                election_candidates_path(election),
-                class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors" %>
             
-            <%= link_to "Add Candidates",
-                new_election_candidate_path(election),
-                class: "rounded-lg bg-[#1B2A4A] hover:bg-[#243a63] px-4 py-2 text-sm font-semibold text-white transition-colors" %>
-          </div>
+            </div>
         <% end %>
       </div>
     <% else %>

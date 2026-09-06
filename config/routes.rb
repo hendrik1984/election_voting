@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         patch :deactivate
       end
     end
+
+    resources :votes, only: [:create]
   end
 
   # Devise

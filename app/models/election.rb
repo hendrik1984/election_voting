@@ -1,5 +1,6 @@
 class Election < ApplicationRecord
     has_many :candidates, dependent: :restrict_with_error
+    has_many :votes, dependent: :restrict_with_error
     
     enum :status, {
         active: "active",
@@ -13,7 +14,7 @@ class Election < ApplicationRecord
     def state
         return 'inactive' if inactive?
         return 'upcoming' if Time.current < start_at
-        return 'ongoing' if Time.current <= end_at
+        return 'ongoing'  if Time.current <= end_at
         return 'ended'
     end
 end

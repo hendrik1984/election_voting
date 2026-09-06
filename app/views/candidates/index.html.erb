@@ -9,6 +9,17 @@
     </svg>
   <% end %>
 
+  <%= link_to elections_path,
+      class: "fixed bottom-24 right-6 flex h-14 w-14 items-center justify-center
+              rounded-full bg-[#1B2A4A] text-white shadow-lg
+              hover:bg-[#1B2A4A]/90 hover:shadow-xl
+              active:scale-95 transition-all duration-150" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 10 4 15 9 20"></polyline>
+      <path d="M20 4v7a4 4 0 0 1-4 4H4"></path>
+    </svg>
+  <% end %>
+
   <% if @candidates.any? %>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <% @candidates.each do |candidate| %>
@@ -16,7 +27,7 @@
 
           <div class="flex items-start justify-between gap-4">
             <div class="min-w-0">
-              <h2 class="text-lg font-semibold text-[#1B2A4A] truncate">
+              <h2 class="text-lg font-semibold text-[#1B2A4A]">
                 <%= candidate.name %>
               </h2>
 
@@ -32,21 +43,37 @@
               <% end %>
             </div>
 
+            <div class="shrink-0">
+              <%= image_tag candidate.image,
+                  referrerpolicy: "no-referrer",
+                  class: "h-16 w-16 sm:h-20 sm:w-20 object-cover border border-gray-200" %>
+            </div>
+
             <div class="flex flex-col gap-2 shrink-0">
               <%= link_to "Edit",
                   edit_election_candidate_path(@election, candidate),
                   class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm font-semibold text-center
                           text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors" %>
 
+              <%= button_to "Vote",
+                  election_votes_path(@election),
+                  data: { turbo_method: :post, turbo_frame: "_top" },
+                  method: :post,
+                  params: { candidate_id: candidate.id },
+                  class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm
+                          font-semibold text-[#1B2A4A] text-center hover:bg-[#1B2A4A]/5 transition-colors w-full" %>
+              
               <% if candidate.active? %>
                 <%= button_to "Deactivate",
                     deactivate_election_candidate_path(@election, candidate),
+                    data: { turbo_method: :patch, turbo_frame: "_top" },
                     method: :patch,
                     class: "rounded-lg border border-red-500 px-4 py-2 text-sm font-semibold text-center
                             text-red-500 hover:bg-red-50 transition-colors w-full" %>
               <% else %>
                 <%= button_to "Activate",
                     activate_election_candidate_path(@election, candidate),
+                    data: { turbo_method: :patch, turbo_frame: "_top" },
                     method: :patch,
                     class: "rounded-lg border border-green-600 px-4 py-2 text-sm font-semibold text-center
                             text-green-600 hover:bg-green-50 transition-colors w-full" %>

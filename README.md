@@ -75,24 +75,22 @@ Jane Doe
 Bob Smith
 
 # Milestone 5 — Voting System
-
 This is the core functionality.
-
-Create Vote model
-Define User → Votes relationship
-Define Election → Votes relationship
-Define Candidate → Votes relationship
-Implement voting
-Validate authenticated user
-Validate election status
-Validate candidate belongs to election
-Prevent voting before election starts
-Prevent voting after election ends
-Prevent duplicate voting
-Add database unique constraint
-Add database indexes
-Handle concurrent voting
-Use database transactions where appropriate
+1. Create Vote model
+2. Define User → Votes relationship
+3. Define Election → Votes relationship
+4. Define Candidate → Votes relationship
+5. Implement voting
+6. Validate authenticated user
+7. Validate election status
+8. Validate candidate belongs to election
+9. Prevent voting before election starts
+10. Prevent voting after election ends
+11. Prevent duplicate voting
+12. Add database unique constraint
+13. Add database indexes
+14. Handle concurrent voting
+15. Use database transactions where appropriate
 
 The fundamental rule:
 

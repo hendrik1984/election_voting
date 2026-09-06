@@ -3,7 +3,7 @@ class ElectionsController < ApplicationController
   before_action :set_election, only: [:edit, :update, :activate, :deactivate]
   
   def index
-    @elections = Election.includes(:candidates).order(start_at: :asc)
+    @elections = Election.includes(:candidates).order(created_at: :desc)
   end
 
   def new
@@ -14,7 +14,7 @@ class ElectionsController < ApplicationController
     @election = Election.new(election_params)
 
     if @election.save
-      redirect_to elections_path, notice: "Election was successfully created."
+      redirect_to elections_path, notice: "Election #{@election.title} was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class ElectionsController < ApplicationController
 
   def update
     if @election.update(election_params)
-      redirect_to root_path, notice: "Election was successfully updated."
+      redirect_to elections_path, notice: "Election #{@election.title} was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,14 +33,12 @@ class ElectionsController < ApplicationController
 
   def activate
     @election.active!
-
-    redirect_to elections_path, notice: "Election was successfully activated"
+    redirect_to elections_path, notice: "Election #{@election.title} was successfully activated"
   end
 
   def deactivate
     @election.inactive!
-
-    redirect_to elections_path, notice: "Election was successfully deactivated"
+    redirect_to elections_path, notice: "Election #{@election.title} was successfully deactivated"
   end
 
   private

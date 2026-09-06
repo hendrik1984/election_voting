@@ -14,7 +14,7 @@ class Election < ApplicationRecord
     def state
         return 'inactive' if inactive?
         return 'upcoming' if Time.current < start_at
-        return 'ongoing' if Time.current <= end_at
+        return 'ongoing'  if Time.current <= end_at
         return 'ended'
     end
 end

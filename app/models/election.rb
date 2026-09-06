@@ -1,4 +1,6 @@
 class Election < ApplicationRecord
+    has_many :candidates, dependent: :restrict_with_error
+    
     enum :status, {
         active: "active",
         inactive: "inactive"

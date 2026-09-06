@@ -3,7 +3,7 @@ class ElectionsController < ApplicationController
   before_action :set_election, only: [:edit, :update, :activate, :deactivate]
   
   def index
-    @elections = Election.order(start_at: :asc)
+    @elections = Election.includes(:candidates).order(start_at: :asc)
   end
 
   def new
@@ -34,13 +34,13 @@ class ElectionsController < ApplicationController
   def activate
     @election.active!
 
-    redirect_to election_path(@election), notice: "Election was successfully activated"
+    redirect_to elections_path, notice: "Election was successfully activated"
   end
 
   def deactivate
     @election.inactive!
 
-    redirect_to election_path(@election), notice: "Election was successfully deactivated"
+    redirect_to elections_path, notice: "Election was successfully deactivated"
   end
 
   private

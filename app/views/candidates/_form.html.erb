@@ -1,0 +1,142 @@
+<div class="relative flex min-h-full items-center justify-center p-6" data-controller="scroll-top">
+  <div class="w-full max-w-4xl rounded-xl bg-white shadow-xl">
+    <div class="max-w-4xl px-6 py-6">
+      <%= form_with model: [election, candidate], data: { turbo_frame: "_top" } do |form| %>
+        <% if @candidate.errors.any? %>
+          <div class="mb-6 rounded-lg border border-[#C4423A]/30 bg-[#C4423A]/10 p-4">
+            <h2 class="font-semibold text-[#C4423A]">
+              Please fix the following errors:
+            </h2>
+
+            <ul class="mt-2 list-disc pl-5 text-sm text-[#C4423A]">
+              <% @candidate.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <!-- Basic Info -->
+        <div class="mb-6">
+          <h3 class="text-sm font-semibold text-[#1B2A4A] uppercase tracking-wide mb-4">Basic Info</h3>
+          <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div>
+              <%= form.label :name, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_field :name,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :image, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_field :image,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :gender, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.select :gender,
+                  ["Male", "Female"],
+                  { prompt: "Select gender" },
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :birth_date, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.date_field :birth_date,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :occupation, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_field :occupation,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :education, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_field :education,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div>
+              <%= form.label :candidate_number, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.number_field :candidate_number,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent" %>
+            </div>
+
+            <div></div>
+          </div>
+        </div>
+
+        <!-- Bio & Platform -->
+        <div class="mb-6 border-t border-gray-200 pt-6">
+          <h3 class="text-sm font-semibold text-[#1B2A4A] uppercase tracking-wide mb-4">Bio & Platform</h3>
+          <div class="grid grid-cols-1 gap-5">
+            <div>
+              <%= form.label :short_bio, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_area :short_bio,
+                  rows: 3,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none" %>
+            </div>
+
+            <div>
+              <%= form.label :description, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_area :description,
+                  rows: 4,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none" %>
+            </div>
+
+            <div>
+              <%= form.label :experience, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_area :experience,
+                  rows: 4,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none" %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision & Mission -->
+        <div class="mb-6 border-t border-gray-200 pt-6">
+          <h3 class="text-sm font-semibold text-[#1B2A4A] uppercase tracking-wide mb-4">Vision & Mission</h3>
+          <div class="grid grid-cols-1 gap-5">
+            <div>
+              <%= form.label :vision, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_area :vision,
+                  rows: 4,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none" %>
+            </div>
+
+            <div>
+              <%= form.label :mission, class: "block text-sm font-medium text-[#1B2A4A]" %>
+              <%= form.text_area :mission,
+                  rows: 4,
+                  class: "mt-2 block w-full rounded-lg border border-gray-300 px-4 py-2 text-[#1B2A4A]
+                          focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3 border-t border-gray-200 pt-5">
+          
+          <%= link_to "Cancel & Back",
+              election_candidates_path,
+              class: "rounded-lg border border-[#1B2A4A] px-5 py-2.5 font-semibold text-[#1B2A4A]
+                      hover:bg-[#1B2A4A]/5 transition-colors" %>
+
+          <%= form.submit class: "rounded-lg bg-[#1B2A4A] hover:bg-[#243a63] px-5 py-2.5 font-semibold text-white transition-colors cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,13 @@ Rails.application.routes.draw do
       patch :activate
       patch :deactivate
     end
+    
+    resources :candidates, only: [:index, :new, :create, :edit, :update] do
+      member do
+        patch :activate
+        patch :deactivate
+      end
+    end
   end
 
   # Devise

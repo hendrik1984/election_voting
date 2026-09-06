@@ -1,5 +1,6 @@
 class Candidate < ApplicationRecord
     belongs_to :election
+    has_many :votes, dependent: :restrict_with_error
 
     enum :status, {
         active: "active",

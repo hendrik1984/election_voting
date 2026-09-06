@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "elections" do %>
+  <div class="mx-auto max-w-4xl">
+    <div class="mt-4 mb-6">
+      <h1 class="text-2xl font-bold">
+        Edit Candidate
+      </h1>
+
+      <p class="mt-1 text-gray-600">
+        Update <%= @candidate.name %>
+      </p>
+
+      <p class="mt-1 text-sm text-gray-500">
+        Election: <%= @election.title %>
+      </p>
+    </div>
+
+    <div class="rounded-xl border bg-white p-6 shadow-sm">
+      <%= render "form", election: @election, candidate: @candidate %>
+    </div>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 class ElectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_election, only: [:edit, :update, :activate, :deactivate]
+  before_action :set_election, only: [:edit, :update, :activate, :deactivate, :vote]
   
   def index
     @elections = Election.includes(:candidates).order(created_at: :desc)
@@ -39,6 +39,12 @@ class ElectionsController < ApplicationController
   def deactivate
     @election.inactive!
     redirect_to elections_path, notice: "Election #{@election.title} was successfully deactivated"
+  end
+
+  def vote
+    @candidates = @election.candidates
+                            .where(status: "active")
+                            .order(candidate_number: :asc, created_at: :asc)
   end
 
   private

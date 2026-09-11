@@ -132,14 +132,14 @@ Election 2026
 
 
 # Milestone 7 — Vote Results
-Calculate candidate vote counts
-Calculate total votes
-Calculate vote percentages
-Display candidate rankings
-Display election statistics
-Optimize vote-count queries
-Add appropriate database indexes
-Analyze query performance
+1. Calculate candidate vote counts
+2. Calculate total votes
+3. Calculate vote percentages
+4. Display candidate rankings
+5. Display election statistics
+6. Optimize vote-count queries
+7. Add appropriate database indexes
+8. Analyze query performance
 
 Example:
 

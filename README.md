@@ -101,16 +101,16 @@ One Election
 One Vote
 
 # Milestone 6 — Voting Page & UX
-Create election voting page
-Display candidate list
-Add Vote button
-Add vote confirmation
-Show successful vote message
-Show duplicate vote message
-Disable voting after successful vote
-Display current user's voting status
-Handle voting errors
-Improve voting page UX
+1. Create election voting page
+2. Display candidate list
+3. Add Vote button
+4. Add vote confirmation
+5. Show successful vote message
+6. Show duplicate vote message
+7. Disable voting after successful vote
+8. Display current user's voting status
+9. Handle voting errors
+10. Improve voting page UX
 
 Target:
 

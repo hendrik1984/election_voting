@@ -5,6 +5,7 @@ class CandidatesController < ApplicationController
 
     def index
         @candidates = @election.candidates.order(candidate_number: :asc, created_at: :asc)
+        @has_voted = @election.votes.exists?(user: current_user)
     end
 
     def new
@@ -45,6 +46,8 @@ class CandidatesController < ApplicationController
     private
     def set_election
         @election = Election.find(params[:election_id])
+    rescue ActiveRecord::RecordNotFound
+        redirect_to elections_path, alert: "The election could not be found."
     end
 
     def set_candidate

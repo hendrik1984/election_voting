@@ -20,6 +20,28 @@
     </svg>
   <% end %>
 
+  <div class="mx-2 mb-6 mt-2">
+    <h1 class="text-2xl font-bold text-[#1B2A4A]">
+      <%= @election.title %>
+    </h1>
+
+    <% if @election.description.present? %>
+      <p class="mt-1 text-[#5C6470]">
+        <%= @election.description %>
+      </p>
+    <% end %>
+
+    <% if @has_voted %>
+      <div class="mt-4 inline-block rounded-lg bg-[#1E8E5A]/10 border border-[#1E8E5A]/30 px-4 py-2 text-sm font-medium text-[#1E8E5A]">
+        ✓ You have already voted in this election.
+      </div>
+    <% else %>
+      <div class="mt-4 inline-block rounded-lg bg-[#E8A33D]/10 border border-[#E8A33D]/30 px-4 py-2 text-sm font-medium text-[#E8A33D]">
+        You have not voted yet.
+      </div>
+    <% end %>
+  </div>
+
   <% if @candidates.any? %>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <% @candidates.each do |candidate| %>
@@ -32,7 +54,7 @@
               </h2>
 
               <p class="shrink-0 rounded-full -ml-2 px-2 py-1 text-sm font-medium
-                        <%= candidate.active? ? 'bg-[#1E8E5A]/10 text-[#1E8E5A]' : 'bg-[#5C6470]/10 text-[#5C6470]' %>"">
+                        <%= candidate.active? ? 'bg-[#1E8E5A]/10 text-[#1E8E5A]' : 'bg-[#5C6470]/10 text-[#5C6470]' %>">
                 Status: <%= candidate.status.capitalize %>
               </p>
 
@@ -46,7 +68,7 @@
             <div class="shrink-0">
               <%= image_tag candidate.image,
                   referrerpolicy: "no-referrer",
-                  class: "h-16 w-16 sm:h-20 sm:w-20 object-cover border border-gray-200" %>
+                  class: "h-16 w-16 sm:h-20 sm:w-20 object-cover rounded-lg border border-gray-200" %>
             </div>
 
             <div class="flex flex-col gap-2 shrink-0">
@@ -54,29 +76,34 @@
                   edit_election_candidate_path(@election, candidate),
                   class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm font-semibold text-center
                           text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors" %>
-
-              <%= button_to "Vote",
-                  election_votes_path(@election),
-                  data: { turbo_method: :post, turbo_frame: "_top" },
-                  method: :post,
-                  params: { candidate_id: candidate.id },
-                  class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm
-                          font-semibold text-[#1B2A4A] text-center hover:bg-[#1B2A4A]/5 transition-colors w-full" %>
+              <% if @has_voted %>
+                <span class="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-semibold text-center text-[#5C6470]">
+                  ✓ Already voted
+                </span>
+              <% else %>
+                <%= button_to "Vote",
+                    election_votes_path(@election),
+                    data: { turbo_method: :post, turbo_frame: "_top", turbo_confirm: "Are you sure you want to vote for #{candidate.name}?" },
+                    method: :post,
+                    params: { candidate_id: candidate.id },
+                    class: "rounded-lg border border-[#1B2A4A] px-4 py-2 text-sm
+                            font-semibold text-[#1B2A4A] text-center hover:bg-[#1B2A4A]/5 transition-colors w-full" %>
+              <% end %>                            
               
               <% if candidate.active? %>
                 <%= button_to "Deactivate",
                     deactivate_election_candidate_path(@election, candidate),
                     data: { turbo_method: :patch, turbo_frame: "_top" },
                     method: :patch,
-                    class: "rounded-lg border border-red-500 px-4 py-2 text-sm font-semibold text-center
-                            text-red-500 hover:bg-red-50 transition-colors w-full" %>
+                    class: "rounded-lg border border-[#C4423A] px-4 py-2 text-sm font-semibold text-center
+                            text-[#C4423A] hover:bg-[#C4423A]/5 transition-colors w-full" %>
               <% else %>
                 <%= button_to "Activate",
                     activate_election_candidate_path(@election, candidate),
                     data: { turbo_method: :patch, turbo_frame: "_top" },
                     method: :patch,
-                    class: "rounded-lg border border-green-600 px-4 py-2 text-sm font-semibold text-center
-                            text-green-600 hover:bg-green-50 transition-colors w-full" %>
+                    class: "rounded-lg border border-[#1E8E5A] px-4 py-2 text-sm font-semibold text-center
+                            text-[#1E8E5A] hover:bg-[#1E8E5A]/5 transition-colors w-full" %>
               <% end %>
             </div>
           </div>
